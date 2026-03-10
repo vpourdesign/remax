@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Équipe Fred et Max — RE/MAX Crystal</title>
+  <style>
+    :root {
+      --safe-primary: #000000;
+      --safe-secondary: #002e7a;
+      --safe-dark: #07111f;
+      --safe-panel: rgba(255,255,255,0.08);
+      --safe-text: #f3f6ff;
+      --safe-muted: rgba(243,246,255,0.72);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--safe-text);
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.08), transparent 30%),
+        radial-gradient(circle at 84% 20%, rgba(63,124,255,0.22), transparent 34%),
+        linear-gradient(135deg, #07111f 0%, var(--safe-primary) 44%, var(--safe-secondary) 100%);
+      overflow-x: hidden;
+    }
+    .safe-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      width: 100%;
+      margin: 0;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(15,31,53,0.12);
+      box-shadow: 0 10px 32px rgba(15,31,53,0.08);
+    }
+    .safe-nav-brand { text-decoration: none; color: #0f1f35; font-weight: 800; }
+    .safe-nav-brand img { height: 42px; width: auto; display: block; }
+    .safe-nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .safe-nav-links a {
+      color: #0f1f35;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: 999px;
+    }
+    .safe-nav-links a.safe-nav-cta { background: linear-gradient(135deg, var(--safe-secondary), #5b95ff); color: #fff; }
+    .safe-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 118px 0 72px;
+    }
+    .safe-shell { width: min(1240px, calc(100% - 36px)); margin: 0 auto; }
+    .safe-hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 46px;
+      align-items: center;
+    }
+    .hero-broker-seo {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .hero-territories-line { font-size: 1rem; line-height: 1.6; color: var(--safe-muted); margin-bottom: 10px; }
+    .safe-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+    }
+    .safe-kicker::before { content: ""; width: 44px; height: 1px; background: rgba(255,255,255,0.4); }
+    .safe-hero h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(3.8rem, 7vw, 7.4rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+      max-width: 8ch;
+    }
+    .safe-hero p.safe-lead {
+      font-size: 1.18rem;
+      line-height: 1.75;
+      color: var(--safe-muted);
+      max-width: 38rem;
+      margin-bottom: 24px;
+    }
+    .safe-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .safe-btn {
+      min-height: 52px;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .safe-btn-primary { background: linear-gradient(135deg, var(--safe-secondary), #61a0ff); color: #fff; }
+    .safe-btn-ghost { border: 1px solid rgba(255,255,255,0.22); color: #fff; }
+    .safe-hero-media { position: relative; min-width: 0; }
+    .safe-hero-media img {
+      width: min(100%, 540px);
+      height: min(72vh, 700px);
+      object-fit: cover;
+      display: block;
+      margin-left: auto;
+      border-radius: 26px;
+      box-shadow: 0 28px 90px rgba(0,0,0,0.34);
+    }
+    .safe-hero-badge {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(7,17,31,0.66);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(12px);
+    }
+    section { padding: 84px 0; }
+    .safe-section-dark { background: rgba(7,17,31,0.42); }
+    .safe-section-light { background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(241,245,255,0.94)); color: #0f1f35; }
+    .safe-section-light .safe-kicker, .safe-section-light h2, .safe-section-light p, .safe-section-light h3 { color: #0f1f35; }
+    .safe-section-light .safe-kicker::before { background: rgba(15,31,53,0.34); }
+    .safe-shell h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .safe-section-sub { max-width: 40rem; color: var(--safe-muted); margin-bottom: 28px; line-height: 1.8; }
+    .safe-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .safe-card, .safe-territory-card {
+      padding: 28px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(14px);
+      min-width: 0;
+    }
+    .safe-card-index, .safe-territory-index { display: inline-block; margin-bottom: 12px; color: rgba(255,255,255,0.45); font-weight: 800; letter-spacing: 0.12em; }
+    .safe-card h3, .safe-territory-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+    .safe-card p, .safe-territory-card p { color: var(--safe-muted); line-height: 1.8; }
+    .safe-territories-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .safe-about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 30px; align-items: center; }
+    .safe-about-media img { width: 100%; height: 460px; object-fit: cover; display: block; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
+    .safe-gallery-slider { position: relative; overflow: hidden; border-radius: 28px; min-height: 560px; box-shadow: 0 28px 80px rgba(0,0,0,0.28); }
+    .safe-gallery-track { position: relative; min-height: 560px; }
+    .safe-gallery-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.55s ease; }
+    .safe-gallery-slide.is-active { opacity: 1; }
+    .safe-gallery-slide img { width: 100%; height: 560px; object-fit: cover; display: block; }
+    .safe-gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(7,17,31,0.48);
+      color: #fff;
+      font-size: 1.9rem;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+    .safe-gallery-nav.prev { left: 18px; }
+    .safe-gallery-nav.next { right: 18px; }
+    .safe-gallery-dots { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
+    .safe-gallery-dot { width: 10px; height: 10px; border-radius: 999px; border: none; background: rgba(255,255,255,0.34); cursor: pointer; }
+    .safe-gallery-dot.is-active { width: 34px; background: #fff; }
+    @media (max-width: 980px) {
+      .safe-nav { padding: 14px 18px; }
+      .safe-nav-links { display: none; }
+      .safe-hero-grid, .safe-cards, .safe-territories-grid, .safe-about-grid { grid-template-columns: 1fr; }
+      .safe-hero-media img { margin: 0; width: 100%; height: 420px; }
+      .safe-gallery-slider, .safe-gallery-track, .safe-gallery-slide img { min-height: 360px; height: 360px; }
+    }
+  </style>
+  <script>
+    (() => {
+      const slider = document.querySelector('.safe-gallery-slider');
+      const slides = slider ? [...slider.querySelectorAll('.safe-gallery-slide')] : [];
+      const dots = [...document.querySelectorAll('.safe-gallery-dot')];
+      if (slides.length > 1) {
+        let index = 0;
+        const sync = (next) => {
+          index = (next + slides.length) % slides.length;
+          slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+          dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+        };
+        slider.querySelector('.safe-gallery-nav.prev')?.addEventListener('click', () => sync(index - 1));
+        slider.querySelector('.safe-gallery-nav.next')?.addEventListener('click', () => sync(index + 1));
+        dots.forEach((dot, i) => dot.addEventListener('click', () => sync(i)));
+        setInterval(() => sync(index + 1), 5000);
+      }
+      const parallaxNodes = [...document.querySelectorAll('[data-parallax], .safe-hero-media, .safe-gallery-slider')];
+      if (parallaxNodes.length) {
+        let ticking = false;
+        const update = () => {
+          const y = window.scrollY || 0;
+          parallaxNodes.forEach((node) => {
+            const speed = Number(node.getAttribute('data-parallax') || 0.06);
+            node.style.transform = 'translate3d(0,' + Math.max(-18, y * speed * -0.16).toFixed(2) + 'px,0)';
+          });
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    })();
+  </script>
+
+<style data-generated-guard="visual-v2">
+:root {
+  --guard-primary: #000000;
+  --guard-secondary: #002e7a;
+  --guard-text: #f7f9ff;
+}
+
+/* Enforce non-flat, non-white opening sections */
+.hero,
+#hero,
+section.hero,
+[data-section="hero"],
+main > section:first-of-type,
+body > section:first-of-type {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(0, 0, 0, 0.34), transparent 44%),
+    radial-gradient(circle at 84% 78%, rgba(0, 46, 122, 0.22), transparent 52%),
+    linear-gradient(135deg, var(--guard-primary) 0%, var(--guard-secondary) 115%) !important;
+  color: var(--guard-text) !important;
+}
+
+.hero + section,
+#hero + section,
+section.hero + section,
+main > section:nth-of-type(2),
+body > section:nth-of-type(2),
+section#services,
+section.services,
+.services {
+  background:
+    radial-gradient(circle at 78% 24%, rgba(0, 0, 0, 0.24), transparent 42%),
+    linear-gradient(160deg, rgba(0, 46, 122, 0.92), rgba(0, 0, 0, 0.78)) !important;
+  color: #eef3ff !important;
+}
+
+/* Keep hero image premium and controlled */
+.hero-image,
+#hero .hero-image,
+.hero__image,
+.hero-media {
+  max-width: min(46vw, 620px) !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+}
+
+.hero-image img,
+#hero .hero-image img,
+.hero__image img,
+.hero-media img {
+  width: 100% !important;
+  max-height: min(70vh, 720px) !important;
+  object-fit: cover !important;
+  border-radius: 20px !important;
+}
+</style>
+</head>
+<body>
+  <nav class="safe-nav">
+    <a class="safe-nav-brand" href="#hero"><img src="assets/logo_1773009943065.png" alt="RE/MAX Crystal" /></a>
+    <div class="safe-nav-links">
+      <a href="#services">Services</a>
+      <a href="#territories">Territoires</a>
+      <a href="#about">A propos</a>
+      <a href="#contact" class="safe-nav-cta">Me contacter</a>
+    </div>
+  </nav>
+  <section id="hero" class="safe-hero">
+    <div class="safe-shell safe-hero-grid">
+      <div>
+        <p class="hero-broker-seo">Équipe Fred et Max</p>
+        <p class="hero-territories-line">Presence forte a Lorraine, Rosemère et Blainville pour propulser votre projet immobilier avec une strategie locale premium.</p>
+        <span class="safe-kicker">RE/MAX Crystal</span>
+        <h1>Équipe Fred et Max</h1>
+        <p class="safe-lead">Équipe immobilière de 3 courtiers desservant la rive-nord de Montréal. nous offrons des photos et vidéos haute gamme pour mettre en valeur vos propriétés. Nous oeuvrons depuis 2008 dans les basses-laurentides. Nous offrons un service technologique poussé et investissons dans des campagnes webs. Nous sommes actifs dans notre communauté et participons à beaucoup de levées de fonds.</p>
+        <div class="safe-hero-actions">
+          <a href="#contact" class="safe-btn safe-btn-primary">Nous contacter</a>
+          <a href="#services" class="safe-btn safe-btn-ghost">Services</a>
+        </div>
+      </div>
+      <div class="safe-hero-media"><img src="assets/photo_1773009949360.jpg" alt="Équipe Fred et Max" /><div class="safe-hero-badge">RE/MAX Crystal</div></div>
+    </div>
+  </section>
+  <section id="services" class="safe-section-dark">
+    <div class="safe-shell">
+      <span class="safe-kicker">Services</span>
+      <h2>Des services tailles pour l'excellence</h2>
+      <p class="safe-section-sub">Un accompagnement clair, haut de gamme et structure pour chaque etape du projet immobilier.</p>
+      <div class="safe-cards"><article class="safe-card"><span class="safe-card-index">01</span><h3>achat</h3><p>Accompagnement stratégique, analyse du marché et sélection ciblée pour trouver la bonne propriété.</p></article><article class="safe-card"><span class="safe-card-index">02</span><h3>vente</h3><p>Positionnement, marketing visuel et négociation structurée pour maximiser la valeur de vente.</p></article><article class="safe-card"><span class="safe-card-index">03</span><h3>investissement</h3><p>Lecture locale du marché, opportunités ciblées et vision long terme pour bâtir un portefeuille.</p></article></div>
+    </div>
+  </section>
+  <section id="territories" class="safe-section-dark">
+    <div class="safe-shell">
+      <span class="safe-kicker">Territoires</span>
+      <h2>Territoires desservis</h2>
+      <p class="safe-section-sub">Lorraine • Rosemère • Blainville</p>
+      <div class="safe-territories-grid">
+    <article class="safe-territory-card">
+      <span class="safe-territory-index">01</span>
+      <h3>Lorraine</h3>
+      <p>Connaissance fine du marché local, lecture de quartier, positionnement précis et accompagnement humain.</p>
+    </article>
+  
+    <article class="safe-territory-card">
+      <span class="safe-territory-index">02</span>
+      <h3>Rosemère</h3>
+      <p>Connaissance fine du marché local, lecture de quartier, positionnement précis et accompagnement humain.</p>
+    </article>
+  
+    <article class="safe-territory-card">
+      <span class="safe-territory-index">03</span>
+      <h3>Blainville</h3>
+      <p>Connaissance fine du marché local, lecture de quartier, positionnement précis et accompagnement humain.</p>
+    </article>
+  </div>
+    </div>
+  </section>
+  <section id="about" class="safe-section-light">
+    <div class="safe-shell safe-about-grid">
+      <div class="safe-about-media"><img src="assets/photo_1773009949363.jpg" alt="Équipe Fred et Max" /></div>
+      <div>
+        <span class="safe-kicker">A propos</span>
+        <h2>Équipe Fred et Max</h2>
+        <p class="safe-section-sub">Équipe immobilière de 3 courtiers desservant la rive-nord de Montréal. nous offrons des photos et vidéos haute gamme pour mettre en valeur vos propriétés. Nous oeuvrons depuis 2008 dans les basses-laurentides. Nous offrons un service technologique poussé et investissons dans des campagnes webs. Nous sommes actifs dans notre communauté et participons à beaucoup de levées de fonds.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="gallery" class="safe-gallery">
+    <div class="safe-shell">
+      <span class="safe-kicker">Photos</span>
+      <h2>Photos</h2>
+      <div class="safe-gallery-slider" data-parallax="0.08">
+        <button class="safe-gallery-nav prev" type="button" aria-label="Photo precedente">‹</button>
+        <div class="safe-gallery-track">
+          <figure class="safe-gallery-slide is-active"><img src="assets/photo_1773009949360.jpg" alt="Équipe Fred et Max" /></figure><figure class="safe-gallery-slide"><img src="assets/photo_1773009949363.jpg" alt="Équipe Fred et Max" /></figure><figure class="safe-gallery-slide"><img src="assets/photo_1773009949364.jpg" alt="Équipe Fred et Max" /></figure>
+        </div>
+        <button class="safe-gallery-nav next" type="button" aria-label="Photo suivante">›</button>
+      </div>
+      <div class="safe-gallery-dots">
+        <button class="safe-gallery-dot is-active" type="button" aria-label="Aller a la photo 1"></button><button class="safe-gallery-dot" type="button" aria-label="Aller a la photo 2"></button><button class="safe-gallery-dot" type="button" aria-label="Aller a la photo 3"></button>
+      </div>
+    </div>
+  </section>
+
+<script data-generated-guard="nav-contrast-v1-script">
+(function () {
+  const style = document.createElement('style');
+  style.setAttribute('data-generated-guard', 'nav-contrast-v1');
+  style.textContent = [
+    'body.stable-white-nav nav, body.stable-white-nav .nav, body.stable-white-nav header nav, body.stable-white-nav .site-header, body.stable-white-nav .navbar { background: rgba(255, 255, 255, 0.98) !important; border-color: rgba(20, 34, 56, 0.12) !important; color: #0f1f35 !important; box-shadow: 0 10px 32px rgba(15, 31, 53, 0.08) !important; }',
+    'body.stable-white-nav nav, body.stable-white-nav .nav, body.stable-white-nav .navbar { top: 0 !important; left: 0 !important; right: 0 !important; margin: 0 !important; width: 100% !important; border-radius: 0 !important; }',
+    'body.stable-white-nav nav a, body.stable-white-nav .nav a, body.stable-white-nav .site-header a, body.stable-white-nav .navbar a, body.stable-white-nav nav button, body.stable-white-nav .nav button { color: #0f1f35 !important; }',
+    'body.stable-white-nav nav .nav-cta, body.stable-white-nav .nav .nav-cta, body.stable-white-nav nav .safe-nav-cta, body.stable-white-nav .navbar .nav-cta { color: #ffffff !important; }',
+    'body.stable-white-nav nav .btn, body.stable-white-nav .nav .btn, body.stable-white-nav .site-header .btn, body.stable-white-nav .navbar .btn { border-color: rgba(20, 34, 56, 0.18) !important; }'
+  ].join('\n');
+  document.head.appendChild(style);
+  const forceLightNav = false;
+  document.body.classList.add('stable-white-nav');
+  if (forceLightNav) document.body.classList.add('logo-dark-nav');
+})();
+</script>
+
+
+<style data-generated-guard="hero-seo-v1">
+.hero .hero-broker-seo,
+#hero .hero-broker-seo,
+.hero-broker-seo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+<script data-generated-guard="hero-seo-v1-script">
+(function () {
+  const hero = document.querySelector('.hero, #hero, section[class*="hero"]');
+  if (!hero) return;
+  const candidates = hero.querySelectorAll('.hero-subtitle, .hero-description, p');
+  for (const p of candidates) {
+    const txt = (p.textContent || '').trim().replace(/\s+/g, ' ');
+    if (!txt) continue;
+    if (txt.length > 190) {
+      p.textContent = txt.slice(0, 187).replace(/[\s,;:.!-]+$/, '') + '...';
+      break;
+    }
+  }
+})();
+</script>
+
+<style data-generated-guard="hero-territories-v1">
+.hero .hero-territories-line,
+#hero .hero-territories-line,
+.hero-territories-line {
+  margin: 0.35rem 0 1.2rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  font-weight: 600;
+  opacity: 0.96;
+}
+</style>
+
+<script data-generated-guard="nav-broker-name-clean-v1">
+(function () {
+  const brokerName = "Équipe Fred et Max";
+  const normalized = brokerName.toLowerCase().trim();
+  if (!normalized) return;
+  const nav = document.querySelector('nav, .nav, .navbar, .site-header');
+  if (!nav) return;
+
+  const walker = document.createTreeWalker(nav, NodeFilter.SHOW_TEXT);
+  const toClean = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    const text = (node.nodeValue || '').toLowerCase().trim();
+    if (!text) continue;
+    if (text === normalized || text.includes(normalized)) {
+      toClean.push(node);
+    }
+  }
+  toClean.forEach((n) => { n.nodeValue = ''; });
+})();
+</script>
+
+<section id="contact" class="contact-modern">
+  <div class="cf-wrap">
+    <div class="cf-head">
+      <span class="cf-kicker">Contact</span>
+      <h2>Parlons de votre projet immobilier</h2>
+      <p>Formulaire visuel uniquement pour le moment. Aucune soumission backend n'est connectee.</p>
+    </div>
+    <form id="contact-form" class="cf-grid" onsubmit="return false;">
+      <label class="cf-field"><span>Nom complet</span><input id="cf-name" type="text" placeholder="Votre nom" /></label>
+      <label class="cf-field"><span>Courriel</span><input id="cf-email" type="email" placeholder="vous@exemple.com" /></label>
+      <label class="cf-field"><span>Telephone</span><input id="cf-phone" type="tel" placeholder="(514) 000-0000" /></label>
+      <label class="cf-field"><span>Ville / Territoire</span><input id="cf-city" type="text" placeholder="Ex: Lorraine" /></label>
+      <label class="cf-field cf-full"><span>Message</span><textarea id="cf-message" rows="5" placeholder="Decrivez votre besoin..."></textarea></label>
+      <button id="cf-submit" class="cf-btn" type="button">Envoyer (bientot connecte)</button>
+    </form>
+  </div>
+</section>
+<style data-generated-guard="contact-v1">
+.contact-modern { padding: 5rem 2rem; background: radial-gradient(circle at 12% 10%, rgba(0, 0, 0, 0.18), transparent 40%), linear-gradient(140deg, rgba(0, 46, 122, 0.95), rgba(0, 0, 0, 0.78)); color: #f4f8ff; }
+.cf-wrap { max-width: 1180px; margin: 0 auto; }
+.cf-kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 700; opacity: 0.85; }
+.cf-head h2 { margin: 0.6rem 0; font-size: clamp(2rem, 3vw, 2.8rem); }
+.cf-head p { opacity: 0.9; margin-bottom: 1.2rem; }
+.cf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.cf-field { display: flex; flex-direction: column; gap: 0.45rem; }
+.cf-field span { font-size: 0.9rem; opacity: 0.95; }
+.cf-field input, .cf-field textarea { border-radius: 14px; border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.12); color: #fff; padding: 0.85rem 0.95rem; font-size: 1rem; }
+.cf-field input::placeholder, .cf-field textarea::placeholder { color: rgba(255,255,255,0.7); }
+.cf-field input:focus, .cf-field textarea:focus { outline: 2px solid rgba(255,255,255,0.35); outline-offset: 2px; }
+.cf-full { grid-column: span 2; }
+.cf-btn { grid-column: span 2; height: 52px; border: none; border-radius: 14px; background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.84)); color: #101a2a; font-weight: 700; cursor: pointer; }
+@media (max-width: 860px) { .cf-grid { grid-template-columns: 1fr; } .cf-full, .cf-btn { grid-column: span 1; } }
+</style>
+
+
+<section id="mortgage-calculator" class="mortgage-calculator">
+  <div class="mc-container">
+    <div class="mc-head">
+      <span class="mc-kicker">Financement</span>
+      <h2>Calculatrice hypothecaire</h2>
+      <p>Estimez rapidement votre paiement mensuel selon votre budget et votre taux.</p>
+    </div>
+    <form id="mortgageForm" class="mc-grid" onsubmit="return false;">
+      <label class="mc-field"><span>Prix de la propriete ($)</span><input id="mcPrice" type="number" min="0" step="1000" value="500000" /></label>
+      <label class="mc-field"><span>Mise de fonds ($)</span><input id="mcDownPayment" type="number" min="0" step="1000" value="100000" /></label>
+      <label class="mc-field"><span>Taux d'interet annuel (%)</span><input id="mcRate" type="number" min="0" step="0.01" value="4.99" /></label>
+      <label class="mc-field"><span>Amortissement (annees)</span><input id="mcYears" type="number" min="1" max="40" step="1" value="25" /></label>
+      <button id="mcCompute" class="mc-btn" type="button">Calculer</button>
+    </form>
+    <div class="mc-result">
+      <div class="mc-card"><span>Paiement mensuel estime</span><strong id="mcMonthly">$0</strong></div>
+      <div class="mc-meta"><p id="mcSummary">Ajustez les champs pour recalculer.</p></div>
+    </div>
+  </div>
+</section>
+<style data-generated-guard="mortgage-v1">
+.mortgage-calculator { padding: 6rem 2rem; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(242,246,255,0.96)); color: #10203a; }
+.mc-container { max-width: 1180px; margin: 0 auto; }
+.mc-head h2 { font-size: clamp(2rem, 3vw, 3rem); margin: 0.5rem 0; }
+.mc-head p { color: rgba(16,32,58,0.72); margin-bottom: 1.5rem; }
+.mc-kicker { text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; font-size: 0.8rem; opacity: 0.85; color: #002e7a; }
+.mc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.mc-field { display: flex; flex-direction: column; gap: 0.45rem; }
+.mc-field span { font-size: 0.9rem; color: rgba(16,32,58,0.84); }
+.mc-field input { height: 52px; border-radius: 14px; border: 1px solid rgba(0, 46, 122, 0.22); background: #fff; color: #10203a; padding: 0 14px; font-size: 1rem; }
+.mc-field input:focus { outline: 2px solid rgba(0, 46, 122, 0.22); outline-offset: 2px; }
+.mc-btn { grid-column: span 2; height: 54px; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; color: #fff; background: linear-gradient(135deg, #002e7a, #000000); }
+.mc-result { margin-top: 1.3rem; display: grid; gap: 1rem; }
+.mc-card { background: linear-gradient(145deg, rgba(0, 46, 122, 0.12), rgba(0, 0, 0, 0.08)); border: 1px solid rgba(0, 46, 122, 0.18); border-radius: 16px; padding: 1.2rem 1.1rem; }
+.mc-card span, .mc-card strong, .mc-meta, .mc-meta p { color: #10203a; }
+.mc-card strong { display: block; font-size: clamp(2rem, 3.2vw, 3rem); margin-top: 0.3rem; }
+.mc-meta { opacity: 0.88; }
+@media (max-width: 860px) { .mc-grid { grid-template-columns: 1fr; } .mc-btn { grid-column: span 1; } }
+</style>
+<script data-generated-guard="mortgage-v1-script">
+function formatMoney(value) { return new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 }).format(value || 0); }
+function calculateMortgage() {
+  const price = Number(document.getElementById('mcPrice')?.value || 0);
+  const downPayment = Number(document.getElementById('mcDownPayment')?.value || 0);
+  const rate = Number(document.getElementById('mcRate')?.value || 0);
+  const years = Number(document.getElementById('mcYears')?.value || 25);
+  const principal = Math.max(0, price - downPayment);
+  const monthlyRate = rate / 100 / 12;
+  const n = Math.max(1, years * 12);
+  let monthly = 0;
+  if (monthlyRate === 0) monthly = principal / n;
+  else monthly = principal * (monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+  const monthlyEl = document.getElementById('mcMonthly');
+  const summaryEl = document.getElementById('mcSummary');
+  if (monthlyEl) monthlyEl.textContent = formatMoney(monthly);
+  if (summaryEl) summaryEl.textContent = 'Montant finance: ' + formatMoney(principal) + ' · Taux: ' + rate.toFixed(2) + '% · Amortissement: ' + years + ' ans';
+}
+document.getElementById('mcCompute')?.addEventListener('click', calculateMortgage);
+['mcPrice', 'mcDownPayment', 'mcRate', 'mcYears'].forEach((id) => { document.getElementById(id)?.addEventListener('input', calculateMortgage); });
+calculateMortgage();
+</script>
+
+
+<style data-generated-guard="parallax-v1">
+[data-parallax-ready] { will-change: transform; transition: transform 0.12s linear; }
+</style>
+<script data-generated-guard="parallax-v1-script">
+(() => {
+  const candidates = [
+    '.hero-image',
+    '.hero-image-frame',
+    '.hero-media',
+    '.safe-hero-media',
+    '#gallery .gallery-auto-slider',
+    '#gallery .safe-gallery-slider',
+    '.gallery-item',
+    '.gallery-auto',
+    '.safe-card',
+    '.service-card'
+  ];
+  const nodes = [...document.querySelectorAll(candidates.join(','))].slice(0, 8);
+  if (!nodes.length) return;
+  nodes.forEach((node, index) => {
+    node.setAttribute('data-parallax-ready', 'true');
+    node.setAttribute('data-parallax-speed', String(0.025 + (index % 3) * 0.015));
+  });
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY || 0;
+    nodes.forEach((node) => {
+      const speed = Number(node.getAttribute('data-parallax-speed') || 0.04);
+      const offset = Math.max(-22, Math.min(22, y * speed * -0.2));
+      node.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+    });
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+</script>
+
+<footer id="footer-crystal" class="footer-crystal">
+  <div class="fc-wrap">
+    <div class="fc-brand">
+      <img src="assets/logo-crystal.png" alt="RE/MAX Crystal" class="fc-logo" />
+      <p class="fc-broker">Équipe Fred et Max</p>
+    </div>
+    <div class="fc-col">
+      <h4>Menu du site</h4>
+      <ul class="fc-menu"><li><a href="#services">Services</a></li><li><a href="#territories">Territoires</a></li><li><a href="#about">A propos</a></li><li><a href="#contact">Me contacter</a></li></ul>
+    </div>
+    <div class="fc-col">
+      <h4>Territoires desservis</h4>
+      <ul class="fc-territories"><li>Lorraine</li><li>Rosemère</li><li>Blainville</li></ul>
+    </div>
+  </div>
+</footer>
+<style data-generated-guard="footer-crystal-v1">
+.footer-crystal {
+  padding: 4.2rem 2rem 2.4rem;
+  background:
+    radial-gradient(circle at 14% -10%, rgba(0, 0, 0, 0.24), transparent 40%),
+    linear-gradient(145deg, #1b1d24, rgba(0, 46, 122, 0.95));
+  color: #eef3ff;
+}
+.fc-wrap { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 2rem; }
+.fc-logo { width: 220px; max-width: 100%; height: auto; object-fit: contain; margin-bottom: 0.85rem; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.28)); }
+.fc-fallback { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.85rem; }
+.fc-broker { opacity: 0.9; margin: 0; }
+.fc-col h4 { margin: 0 0 0.85rem; font-size: 1.05rem; letter-spacing: 0.02em; }
+.fc-col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
+.fc-col a { color: #f5f8ff; opacity: 0.9; text-decoration: none; }
+.fc-col a:hover { opacity: 1; text-decoration: underline; }
+.fc-territories li { opacity: 0.92; }
+@media (max-width: 980px) { .fc-wrap { grid-template-columns: 1fr; } }
+</style>
+
+</body>
+</html>

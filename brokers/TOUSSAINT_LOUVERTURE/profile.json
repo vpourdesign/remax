@@ -1,0 +1,32 @@
+{
+  "name": "Toussaint Louverture",
+  "brand": "RE/MAX Crystal",
+  "city": "",
+  "territories": [
+    "Lorraine",
+    "Rosemère"
+  ],
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "style": "modern",
+  "palette": {
+    "primary": "#232323",
+    "secondary": "#006D8F"
+  },
+  "services": [
+    "achat",
+    "vente",
+    "investissement"
+  ],
+  "bio": "Équipe immobilière de 3 courtiers desservant la rive-nord de Montréal. nous offrons des photos et vidéos haute gamme pour mettre en valeur vos propriétés. Nous oeuvrons depuis 2008 dans les basses-laurentides. Nous offrons un service technologique poussé et investissons dans des campagnes webs. Nous sommes actifs dans notre communauté et participons à beaucoup de levées de fonds.",
+  "testimonials": [],
+  "photos": [
+    "/assets/TOUSSAINT_LOUVERTURE/photo_1773079774789.jpg",
+    "/assets/TOUSSAINT_LOUVERTURE/photo_1773079774792.jpg",
+    "/assets/TOUSSAINT_LOUVERTURE/photo_1773079774793.jpg",
+    "/assets/TOUSSAINT_LOUVERTURE/photo_1773079774794.jpg"
+  ],
+  "logo": "/assets/TOUSSAINT_LOUVERTURE/logo_1773079767103.png"
+}

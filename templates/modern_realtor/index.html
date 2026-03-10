@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{name}} | Courtier immobilier</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+.hero-bg{
+background: linear-gradient(135deg,#0f172a,#1e293b);
+}
+</style>
+
+</head>
+
+<body class="bg-slate-950 text-white font-sans">
+
+<!-- HERO -->
+
+<section class="hero-bg min-h-screen flex items-center">
+
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+<div>
+
+<h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+
+{{name}}
+
+</h1>
+
+<p class="text-xl text-slate-300 mb-8">
+
+Courtier immobilier à {{city}}
+
+</p>
+
+<button class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded-xl text-lg font-semibold">
+
+Évaluer ma propriété
+
+</button>
+
+</div>
+
+<div>
+
+<img src="{{photo}}" class="rounded-3xl shadow-2xl"/>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="py-24">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold mb-12">
+
+Services immobiliers
+
+</h2>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="bg-slate-900 p-8 rounded-2xl">
+
+<h3 class="text-2xl font-semibold mb-4">
+
+Acheter
+
+</h3>
+
+<p class="text-slate-400">
+
+Trouver la propriété parfaite avec accompagnement stratégique.
+
+</p>
+
+</div>
+
+<div class="bg-slate-900 p-8 rounded-2xl">
+
+<h3 class="text-2xl font-semibold mb-4">
+
+Vendre
+
+</h3>
+
+<p class="text-slate-400">
+
+Stratégie marketing et visibilité maximale.
+
+</p>
+
+</div>
+
+<div class="bg-slate-900 p-8 rounded-2xl">
+
+<h3 class="text-2xl font-semibold mb-4">
+
+Investir
+
+</h3>
+
+<p class="text-slate-400">
+
+Analyse de marché et opportunités rentables.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="py-24 bg-red-600 text-center">
+
+<h2 class="text-4xl font-bold mb-6">
+
+Prêt à vendre votre propriété ?
+
+</h2>
+
+<p class="text-lg mb-8">
+
+Contactez {{name}} dès aujourd'hui.
+
+</p>
+
+<button class="bg-black px-10 py-4 rounded-xl text-lg font-semibold">
+
+Demander une consultation
+
+</button>
+
+</section>
+
+</body>
+</html>

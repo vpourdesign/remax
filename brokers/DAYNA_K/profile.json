@@ -1,0 +1,21 @@
+{
+  "name": "Dayna Kapogiannatos",
+  "brand": "RE/MAX Crystal",
+  "city": "Laval",
+  "territories": ["Chomedey", "Laval", "Montreal"],
+  "languages": ["fr", "en"],
+  "style": "modern",
+  "palette": {
+    "primary": "#D71920",
+    "secondary": "#1C1C1C"
+  },
+  "services": [
+    "achat",
+    "vente",
+    "investissement"
+  ],
+  "bio": "",
+  "testimonials": [],
+  "photos": [],
+  "logo": ""
+}

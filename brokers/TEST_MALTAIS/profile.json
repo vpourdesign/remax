@@ -1,0 +1,30 @@
+{
+  "name": "test maltais",
+  "brand": "RE/MAX Crystal",
+  "city": "",
+  "territories": [
+    "yo youyyo"
+  ],
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "style": "modern",
+  "palette": {
+    "primary": "#001E57",
+    "secondary": "#3A88FE"
+  },
+  "services": [
+    "achat",
+    "vente",
+    "investissement"
+  ],
+  "bio": "Je sui grand et beau et je sui fier",
+  "testimonials": [],
+  "photos": [
+    "/assets/TEST_MALTAIS/photo_1772923933460.jpg",
+    "/assets/TEST_MALTAIS/photo_1772923933460.jpg",
+    "/assets/TEST_MALTAIS/photo_1772923933463.jpg"
+  ],
+  "logo": "/assets/TEST_MALTAIS/logo_1772923928324.png"
+}

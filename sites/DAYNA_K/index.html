@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayna Kapogiannatos | Courtier Immobilier RE/MAX Crystal | Laval, Montréal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D71920;
+            --secondary: #1C1C1C;
+            --white: #FFFFFF;
+            --light-gray: #F8F8F8;
+            --medium-gray: #E5E5E5;
+            --dark-gray: #3A3A3A;
+            --accent-soft: #FFF5F5;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            margin-top: 82px;
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--white) 50%, var(--light-gray) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(215, 25, 32, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 90vh;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            padding: 4rem 0;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.25rem;
+            background: var(--white);
+            border-left: 3px solid var(--primary);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            overflow: hidden;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: -5%;
+            width: 90%;
+            height: 90%;
+            background: var(--primary);
+            opacity: 0.08;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services {
+            padding: 8rem 0;
+            background: var(--white);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--medium-gray);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 2rem;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .service-description {
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        .territories {
+            padding: 8rem 0;
+            background: linear-gradient(to bottom, var(--light-gray) 0%, var(--white) 100%);
+            position: relative;
+        }
+
+        .territories::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(215, 25, 32, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .territories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .territory-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .territory-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .territory-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .territory-tag {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .about {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            width: 80%;
+            height: 80%;
+            border: 2px solid var(--primary);
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-soft);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .cta-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(215, 25, 32, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .button-primary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .button-secondary:hover {
+            background: var(--white);
+            color: var(--secondary);
+        }
+
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .services-grid,
+            .territories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                gap: 2rem;
+            }
+
+            .hero-content {
+                padding: 3rem 0 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-image-wrapper {
+                height: 500px;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content h2 {
+                font-size: 2rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="assets/logo.png" class="logo" alt="RE/MAX Crystal">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#territoires">Territoires</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact" class="cta-button">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-label">RE/MAX Crystal</div>
+                    <h1>Dayna Kapogiannatos</h1>
+                    <p class="hero-subtitle">Courtier immobilier résidentiel à Laval et Montréal. Expertise en achat, vente et investissement immobilier pour concrétiser vos projets de vie.</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Années d'expérience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Clients satisfaits</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Territoires</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/dayna-hero.jpg" alt="Dayna Kapogiannatos">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Services</div>
+                <h2 class="section-title">Accompagnement Expert</h2>
+                <p class="section-description">Des services personnalisés pour chaque étape de votre parcours immobilier</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="assets/dayna-acheter.jpg" alt="Achat immobilier" class="service-image">
+                    <h3 class="service-title">Achat</h3>
+                    <p class="service-description">Trouvez la propriété idéale qui correspond à vos besoins et votre budget. Accompagnement personnalisé de la recherche à la signature.</p>
+                    <a href="#contact" class="service-link">En savoir plus →</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/dayna-vendre.jpg" alt="Vente immobilière" class="service-image">
+                    <h3 class="service-title">Vente</h3>
+                    <p class="service-description">Vendez votre propriété au meilleur prix grâce à une stratégie marketing efficace et une visibilité maximale sur le marché.</p>
+                    <a href="#contact" class="service-link">En savoir plus →</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/dayna-evaluation.jpg" alt="Investissement immobilier" class="service-image">
+                    <h3 class="service-title">Investissement</h3>
+                    <p class="service-description">Bâtissez votre patrimoine immobilier avec des conseils d'expert et une analyse approfondie du marché pour maximiser vos rendements.</p>
+                    <a href="#contact" class="service-link">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="territories" id="territoires">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Territoires</div>
+                <h2 class="section-title">Zones d'expertise</h2>
+                <p class="section-description">Une connaissance approfondie du marché immobilier dans ces secteurs stratégiques</p>
+            </div>
+            <div class="territories-grid">
+                <div class="territory-card">
+                    <h3 class="territory-name">Chomedey</h3>
+                    <p class="territory-tag">Quartier résidentiel prisé</p>
+                </div>
+                <div class="territory-card">
+                    <h3 class="territory-name">Laval</h3>
+                    <p class="territory-tag">Ville dynamique en pleine expansion</p>
+                </div>
+                <div class="territory-card">
+                    <h3 class="territory-name">Montréal</h3>
+                    <p class="territory-tag">Métropole cosmopolite</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="apropos">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/dayna-about.jpg" alt="Dayna Kapogiannatos - À propos">
+                </div>
+                <div class="about-content">
+                    <h2>Une passion pour l'immobilier</h2>
+                    <p>Forte d'une expertise reconnue dans le domaine de l'immobilier résidentiel, je mets à votre service mon professionnalisme, mon écoute et ma connaissance approfondie du marché.</p>
+                    <p>Ma mission est de vous accompagner avec transparence et dévouement dans la réalisation de vos projets immobiliers, qu'il s'agisse d'acheter, de vendre ou d'investir.</p>
+                    <p>Bilingue et à l'écoute de vos besoins, je m'engage à vous offrir un service personnalisé qui dépasse vos attentes.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Service bilingue FR/EN</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Disponibilité 7 jours</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Réseau RE/MAX</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Expertise locale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à concrétiser votre projet?</h2>
+                <p>Contactez-moi dès aujourd'hui pour une consultation gratuite et sans engagement</p>
+                <div class="cta-buttons">
+                    <a href="tel:+15145551234" class="button button-primary">Appelez maintenant</a>
+                    <a href="mailto:dayna@remaxcrystal.com" class="button button-secondary">Envoyez un courriel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Dayna Kapogiannatos</h3>
+                    <p>Courtier immobilier résidentiel<br>RE/MAX Crystal<br>Laval, Québec</p>
+                    <p>Service bilingue: Français & English</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Achat</a></li>
+                        <li><a href="#services">Vente</a></li>
+                        <li><a href="#services">Investissement</a></li>
+                        <li><a href="#services">Évaluation gratuite</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Territoires</h4>
+                    <ul class="footer-links">
+                        <li><a href="#territoires">Chomedey</a></li>
+                        <li><a href="#territoires">Laval</a></li>
+                        <li><a href="#territoires">Montréal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+15145551234">(514) 555-1234</a></li>
+                        <li><a href="mailto:dayna@remaxcrystal.com">dayna@remaxcrystal.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dayna Kapogiannatos | RE/MAX Crystal. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

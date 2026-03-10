@@ -1,0 +1,33 @@
+{
+  "name": "Équipe Fred et Max",
+  "brand": "RE/MAX Crystal",
+  "city": "",
+  "territories": [
+    "Lorraine",
+    "Rosemère",
+    "Blainville"
+  ],
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "style": "modern",
+  "palette": {
+    "primary": "#000000",
+    "secondary": "#002E7A"
+  },
+  "services": [
+    "achat",
+    "vente",
+    "investissement"
+  ],
+  "bio": "Équipe immobilière de 3 courtiers desservant la rive-nord de Montréal. nous offrons des photos et vidéos haute gamme pour mettre en valeur vos propriétés. Nous oeuvrons depuis 2008 dans les basses-laurentides. Nous offrons un service technologique poussé et investissons dans des campagnes webs. Nous sommes actifs dans notre communauté et participons à beaucoup de levées de fonds.",
+  "testimonials": [],
+  "photos": [
+    "/assets/EQUIPE_FRED_ET_MAX/photo_1773009949360.jpg",
+    "/assets/EQUIPE_FRED_ET_MAX/photo_1773009949363.jpg",
+    "/assets/EQUIPE_FRED_ET_MAX/photo_1773009949363.jpg",
+    "/assets/EQUIPE_FRED_ET_MAX/photo_1773009949364.jpg"
+  ],
+  "logo": "/assets/EQUIPE_FRED_ET_MAX/logo_1773009943065.png"
+}

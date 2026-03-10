@@ -1,0 +1,32 @@
+{
+  "name": "Salut Bonjour",
+  "brand": "RE/MAX Crystal",
+  "city": "",
+  "territories": [
+    "Rosemere",
+    "Blainville"
+  ],
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "style": "modern",
+  "palette": {
+    "primary": "#A8C6FE",
+    "secondary": "#006D8F"
+  },
+  "services": [
+    "achat",
+    "vente",
+    "investissement"
+  ],
+  "bio": "Équipe immobilière de 3 courtiers desservant la rive-nord de Montréal. nous offrons des photos et vidéos haute gamme pour mettre en valeur vos propriétés. Nous oeuvrons depuis 2008 dans les basses-laurentides. Nous offrons un service technologique poussé et investissons dans des campagnes webs. Nous sommes actifs dans notre communauté et participons à beaucoup de levées de fonds.",
+  "testimonials": [],
+  "photos": [
+    "/assets/SALUT_BONJOUR/photo_1773001126180.jpg",
+    "/assets/SALUT_BONJOUR/photo_1773001126183.jpg",
+    "/assets/SALUT_BONJOUR/photo_1773001126185.jpg",
+    "/assets/SALUT_BONJOUR/photo_1773001126186.jpg"
+  ],
+  "logo": "/assets/SALUT_BONJOUR/logo_1773001121302.png"
+}
