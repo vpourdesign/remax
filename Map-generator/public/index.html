@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <span class="eyebrow">Map Generator</span>
+        <h1>Générez une carte immobilière 4:5 prête à partager.</h1>
+        <p>
+          Entrez une adresse complète. Le portail génère une image design avec la propriété au centre et les attraits autour:
+          parcs, écoles et commerces d’importance.
+        </p>
+      </div>
+
+      <form id="map-form" class="form-card">
+        <label for="address" class="field-label">Entrez l’adresse complète</label>
+        <input
+          id="address"
+          name="address"
+          class="address-input"
+          type="text"
+          placeholder="Ex: 123 Rue des Érables, Rosemère, QC"
+          autocomplete="street-address"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          inputmode="text"
+          required
+        />
+        <button type="submit" class="generate-btn">Générer la carte</button>
+        <p id="status" class="status"></p>
+      </form>
+    </section>
+
+    <section class="result-shell">
+      <div id="result-empty" class="result-empty">
+        <h2>Prévisualisation</h2>
+        <p>L’image 4:5 apparaîtra ici après génération.</p>
+      </div>
+
+      <div id="result-card" class="result-card hidden">
+        <div class="result-head">
+          <div>
+            <span class="eyebrow">Résultat</span>
+            <h2 id="result-title">Carte générée</h2>
+          </div>
+          <a id="download-link" class="download-btn" href="#" download>Télécharger PNG</a>
+        </div>
+        <div class="result-layout">
+          <div class="result-visual">
+            <img id="result-image" class="result-image" alt="Carte générée" />
+            <div id="poi-summary" class="poi-summary"></div>
+          </div>
+          <aside class="selection-panel">
+            <div class="selection-head">
+              <div>
+                <span class="eyebrow">Sélection</span>
+                <h3>Lieux affichés</h3>
+              </div>
+              <button id="regenerate-btn" type="button" class="secondary-btn">Regénérer la carte</button>
+            </div>
+            <p class="selection-copy">Coche les lieux à conserver sur la carte. La liste inclut plus d’options que la version affichée.</p>
+            <div id="poi-selector" class="poi-selector"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
